@@ -1,4 +1,5 @@
 import math
+import sys
 """
 Varous specialized string display formatting utilities. Test me with
 canned self-test or command-line arguments
@@ -28,14 +29,14 @@ def money(N, width = 0):
     fract = ('%.2f' % N)[-2:]
     format = '%s%s.%s' % (sign, whole, fract)
 
-    return '$%s' % (width, format)
+    return '$%s%s' % (width, format)
 
 
 if __name__ == "__main__":
     def selftest():
         tests = 0 , 1  # fails: -1, 1.23
-        test += 12, 123, 1234, 12345, 123456, 1234567
-        test += 2 ** 32, 2 ** 100
+        tests += 12, 123, 1234, 12345, 123456, 1234567
+        tests += 2 ** 32, 2 ** 100
 
         for test in tests:
             print(commas(test))
@@ -50,11 +51,11 @@ if __name__ == "__main__":
         tests += (2 ** 100), -(2 **100)
 
         for test in tests:
-            print('%s [%s]' % money(test, 17), test)
+            print('%s [%s]' % (money(test,17), test))
     import sys
     if len(sys.argv) == 1:
         selftest()
     else:
-        print(money(float(sys.argv[1]), int(sys.argv[2])))        
+        print(money(float(sys.argv[1]), int(sys.argv[2])))      ### sys.argv is used to represent command-line arguments  
 
 
