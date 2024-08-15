@@ -24,3 +24,22 @@ class ListInstance:
         for attr in sorted(self.__dict__):
             result += '\t name %s=%s' % (attr, self.__dict__[attr])
         return result
+
+
+class Super:
+    def __init__(self):
+        self.data1 = 'Spam'
+    def ham(self):
+        pass
+
+class Sub(Super, ListInstance):
+    def __init__(self):
+        Super.__init__(self)
+        self.data2 = 'Eggs'   # instance attributes
+        self.data3 = 42
+    def spam(self):
+        pass
+
+if __name__ == "__main__":
+    X = Sub()
+    print(X)
