@@ -13,6 +13,11 @@ class ListInstance:
     The class uses two additional techniques: 
                                         - It displays the instance's memory address by calling the id built in function
                                         - It uses pseudoprivate naming pattern for it's worker method __attrnames
+
+
+    The ListInstance works in any class it'ss mixed into because the self refers to an instance of the subclass that pulls this class in, whetever that might be.
+
+
     """
 
     def __str__(self):
@@ -22,7 +27,33 @@ class ListInstance:
     def __attrnames(self):
         result = ''
         for attr in sorted(self.__dict__):
-            result += '\t name %s=%s' % (attr, self.__dict__[attr])
+            result += '\tname %s=%s\n' % (attr, self.__dict__[attr])
+        return result
+
+
+
+## Modifying the mix-in to include the instance attrbutes and inherited attributes with dir
+class ListInherited:
+    """
+    Use the dir() built-in function to collect both instance attrs and names inherited from its classes
+    Use __str__ not __repr__, 
+    getattr() fetches inherited names not in self.__dict__,
+    """
+
+    def __str__(self):
+        return '<Instance of %s, address %s: \n%s>' % (
+            self.__class__.__name__,
+            id(self),
+            self.__attrnames()
+        )
+
+    def __attrnames(self):
+        result = ''
+        for attr in dir(self):  ## instance dir()
+            if attr[:2] == '__' and attr[-2] == '__':  ## we will loop and skip internals
+                result += '\tname %s <> \n' % attr
+            else:
+                result += '\tname %s=%s\n' % (attr, getattr(self, attr))
         return result
 
 
@@ -32,13 +63,15 @@ class Super:
     def ham(self):
         pass
 
-class Sub(Super, ListInstance):
+class Sub(Super, ListInherited):
     def __init__(self):
         Super.__init__(self)
         self.data2 = 'Eggs'   # instance attributes
         self.data3 = 42
     def spam(self):
         pass
+
+
 
 if __name__ == "__main__":
     X = Sub()
