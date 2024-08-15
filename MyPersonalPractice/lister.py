@@ -8,6 +8,11 @@ class ListInstance:
     Each instance has a built-in __class__ attribute that references the class from which it was created from, and each class has a __name__ attribute that 
     references the name in the header.
     The expression self.__class__.__name__ fetches the name of an instance's class.
+
+    This class uses the __dict__ which is exported in instance's attribute dictionary to build up a string showing the names and values of all instance attributes.
+    The class uses two additional techniques: 
+                                        - It displays the instance's memory address by calling the id built in function
+                                        - It uses pseudoprivate naming pattern for it's worker method __attrnames
     """
 
     def __str__(self):
