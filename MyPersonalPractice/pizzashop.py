@@ -9,6 +9,7 @@ class Customer:
         print(self.name, "Pays for item to", server)
 
 
+
 class Oven:
     def bake(self):
         print("Oven bakes")
@@ -38,3 +39,8 @@ if __name__ == "__main__":
 The Pizza class is a container and a controller, its constructor makes and embeds instances of the employee classes we wrote in employee.py 
 and also the oven class.
 """
+
+try:
+    raise IndexError
+except IndexError:
+    print('Got an exception here!')
