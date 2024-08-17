@@ -31,7 +31,7 @@ class Extender(Super):
         print("Ending Extender.method")
 
 class Provider(Super):
-    def action(self):
+    def action(self):    ## function provided by the subclass extending the superclass
         print('in Provider.action')
 
 
