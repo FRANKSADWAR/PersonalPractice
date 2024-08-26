@@ -44,14 +44,7 @@ def send_bip_whatsapp(phone_number):
 
     results = requests.post(url = api_url,headers=headers, json = payload)
     res = results.json()
-    description = ""
-
-    if res.get("bulkId"):
-        description += res.get("bulkId")
-        return description
-    else:
-        description += "Failed"
-        return description
+    return res
     
 if __name__ == "__main__":
     result = send_bip_whatsapp("254702568824")
