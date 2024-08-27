@@ -87,7 +87,7 @@ def test_sdk():
     "messages": [
         {
         "from": "254795570197",
-        "to": "254726966435",
+        "to": "254702568824",
         "messageId": "a28dd97c-1ffb-4fcf-99f1-0b557ed381da",
         "content": {
             "templateName": "new_conversation_starter",
