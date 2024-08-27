@@ -77,8 +77,6 @@ def test_send_template(phone):
     print(data.decode("utf-8"))
 
 
-
-
 def test_sdk():
     from infobip_channels.whatsapp.channel import WhatsAppChannel
     c = WhatsAppChannel.from_auth_params({
@@ -89,10 +87,10 @@ def test_sdk():
     "messages": [
         {
         "from": "254795570197",
-        "to": "254702568824",
+        "to": "254726966435",
         "messageId": "a28dd97c-1ffb-4fcf-99f1-0b557ed381da",
         "content": {
-            "templateName": "rice_advisories_1_site_selection_en",
+            "templateName": "new_conversation_starter",
             "templateData": {
             "body": {
                         "placeholders": []
