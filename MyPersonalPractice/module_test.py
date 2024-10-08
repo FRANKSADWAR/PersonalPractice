@@ -57,5 +57,3 @@ if __name__ == "__main__":
         selftest()
     else:
         print(money(float(sys.argv[1]), int(sys.argv[2])))      ### sys.argv is used to represent command-line arguments  
-
-
