@@ -17,6 +17,10 @@ for d in weather_data:
     else:
         years[key] = 1
 
+pprint.pp(years)
 
+### Which date had the warmest day in the dataset ?
+warmday = max(weather_data,key=lambda x: x['tmax'])
+print(f"warmest day was {warmday['date']}")
 
 
