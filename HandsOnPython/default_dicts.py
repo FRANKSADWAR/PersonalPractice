@@ -31,3 +31,5 @@ counts = defaultdict(int)
 for letter in "banana":
     counts[letter] += 1
 print(dict(counts))
+
+help(defaultdict)
