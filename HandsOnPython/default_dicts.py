@@ -49,6 +49,16 @@ help(defaultdict)
 ## Method a function that is specific to a data type or an object i.e df.head() or df.groupby()
 
 def average(values:list, rounded:bool = True):
+    """
+    Calculate the average of a list of numbers.
+
+    Args:
+        values (list): a list of numerical values
+        rounded (bool): boolean flag to round off the result into 2 dp. Defaults to true.
+
+    Returns:
+        average_value (float): The mean of the values in the list
+    """
     ## We can use assert statement to check for types
     assert isinstance(values,list), "Only list objects allowed"
     assert isinstance(rounded,bool), "Only boolean type allowed"
@@ -60,3 +70,5 @@ def average(values:list, rounded:bool = True):
     else:
         average_value = sum(values) / len(values)
         return average_value
+
+average.__doc__ ## dunder-doc attribute
