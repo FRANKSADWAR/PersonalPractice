@@ -47,3 +47,16 @@ help(defaultdict)
 ## Function is code to perform a task i.e sum, len function
 
 ## Method a function that is specific to a data type or an object i.e df.head() or df.groupby()
+
+def average(values:list, rounded:bool = True):
+    ## We can use assert statement to check for types
+    assert isinstance(values,list), "Only list objects allowed"
+    assert isinstance(rounded,bool), "Only boolean type allowed"
+
+    if rounded == True:
+        average_value = sum(values) / len(values)
+        rounded = round(average_value,2)
+        return rounded
+    else:
+        average_value = sum(values) / len(values)
+        return average_value
