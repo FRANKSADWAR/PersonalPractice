@@ -172,3 +172,72 @@ def compute_averages(values):
         return average_value
     else:
         raise TypeError("Average() accepts a list or set, please provide a correct data type") ## provide a custom message on the raise
+    
+
+
+def validate_name(name):
+    if type(name) != str:
+        return False
+    elif len(name) <= 2:
+        return False
+    else:
+        return True
+    
+top_level_domains = [".org",".net",".edu",".ac",".uk",".com"]
+def validate_email(email):
+    valid_email = False
+    username = email.split("@")[0]
+    if '@' not in email:
+        return valid_email
+    if len(username) < 1:
+        return valid_email
+    for domain in top_level_domains:
+        if domain in email:
+            valid_email = True
+    return valid_email
+
+
+def validate_password(password):
+    import string
+    u_chars = string.ascii_uppercase
+    digits = string.digits
+    puncts = string.punctuation
+
+    has_capital = False
+    has_number = False
+    has_puncts = False
+
+    if len(password) < 8:
+        return False
+    for char in password:
+        if char in u_chars:
+            has_capital = True
+        if char in digits:
+            has_number = True
+        if char in puncts:
+            has_puncts = True
+    if has_capital and has_number and has_puncts:
+        return True
+    else:
+        return False
+
+
+
+## Validate user password and return a dictionary
+def validate_user(name,email, password):
+    if validate_name(name) == False:
+        raise ValueError("The name is not greater than two charasters or is not a string.")
+    elif validate_email(email) == False:
+        raise ValueError("The email address is invalid.")
+    elif validate_password(password) == False:
+        raise ValueError("Password is not strong enough.")
+    else:
+        return True
+
+
+def register_user(name, email, password):
+    try:
+        validate_user(name, email, password)
+        return {"name":name, "email": email, "password": password}
+    except:
+        return False
