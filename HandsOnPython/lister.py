@@ -64,7 +64,6 @@ class ListTree:
     Uses __X attr names to avoid impacting clients
     Uses generator expression to recurse to the superclasses
     Uses str.format() to make substitutions clearer
-
     """
 
     def __str__(self):

@@ -131,8 +131,11 @@ action_table["press_one"]()
 lower = (lambda x,y: x if x < y else y)
 lower("aa","bb")
 
-### Mapping functions over sequences: map, filter, reduce
+### BUILT-IN FUNCTIONS Mapping functions over sequences: map, filter, reduce
+
 """
+zip, 
+input,
 map, filter and reduce are functional programming tools which apply a function over iterables and sequences
 Apply a function over an iterable i.e list object, tuple object, dictionary keys, sets
 """
@@ -154,3 +157,18 @@ filtered_a = list(filter((lambda x: x < 5), list(range(-5,5))))
 from functools import reduce
 reduced_a = reduce((lambda x,y: x + y),[1,2,3,4,5])
 reduce((lambda *args: sum(args)),[90,90,90,90])
+
+
+### Introduction to handling errors
+"""
+using try-except: will execute the except block if the try block failed
+raise: will produce an error and avoids running subsequent code
+"""
+
+def compute_averages(values):
+    ## Check data types
+    if type(values) in [list,set,tuple]:
+        average_value = sum(values)/ len(values)
+        return average_value
+    else:
+        raise TypeError("Average() accepts a list or set, please provide a correct data type") ## provide a custom message on the raise
