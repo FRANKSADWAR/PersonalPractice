@@ -98,3 +98,59 @@ def concat(**kwargs): ## double asterisk: arbitrary keyword arguments
     return result
 
 ## Lambda functions
+"""
+Represents an anonymous function
+lambda argument(s) : expresion Lambda is an exression and not a statement hence can appear in places where defs cannot appear i.e in list literals
+Lambda's bosy is a single expression not a block of statements
+lambda x: sum(x) / len(x)
+"""
+f = lambda x,y,z : x + y+ z
+f(2,3,4) ## we can assign this result to another variable
+xyz = f(2,3,4)
+
+sales_price = 90.00
+print((lambda: sales_price * 1.16)()) ## to get the results directly we have to add a parenthesis to call the lambda
+
+## Lambdas can also be used to code jump tables / action tables
+L = [lambda x: x **2,
+     lambda x: x**3,
+     lambda x : x** 4
+    ]
+for f in L:
+    print(f(2))
+
+## we can do the same with dictionaries
+action_table = {
+    "press_one": (lambda : 2 + 2),
+    "press_two": (lambda: 2 * 4),
+    "press_three": (lambda : 2 ** 6)
+}
+action_table["press_one"]()
+
+## we can also use lambda expressions with if/else statements
+lower = (lambda x,y: x if x < y else y)
+lower("aa","bb")
+
+### Mapping functions over sequences: map, filter, reduce
+"""
+map, filter and reduce are functional programming tools which apply a function over iterables and sequences
+Apply a function over an iterable i.e list object, tuple object, dictionary keys, sets
+"""
+
+## Because map expects a function to be passed, it is one place that lambdas can also appear
+def inc(x):return x + 10
+counters = [1,2,3,4]
+counters_ = list(map(inc, counters))
+counters_a = list(map((lambda x: x + 10),counters))
+
+names = ["james","sally","carmen"]
+capitals = map(lambda x: x.capitalize(),names)
+print(list(capitals))
+
+### Another built-in tool is the filter function
+filtered_a = list(filter((lambda x: x < 5), list(range(-5,5))))
+
+## Another built-in tool is the reduce function which we have to import from functools
+from functools import reduce
+reduced_a = reduce((lambda x,y: x + y),[1,2,3,4,5])
+reduce((lambda *args: sum(args)),[90,90,90,90])
