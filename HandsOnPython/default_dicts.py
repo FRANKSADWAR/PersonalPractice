@@ -72,3 +72,29 @@ def average(values:list, rounded:bool = True):
         return average_value
 
 average.__doc__ ## dunder-doc attribute
+
+
+### Arbitraty arguments
+"""
+Arbitrary arguments allow funtions to accept any number of arguments
+Arbitrary positional arguments *args: allows functions to accept any number of positional non-keyword arguments
+* means converting arguments to a single iterable (tuple)
+
+Arbitrary keyword arguments **kwargs:  key = value
+"""
+
+def concat_strings(*args): ## single asterisk: arbitrary positional arguments
+    result = ""
+    for arg in args:
+        result += " " + arg
+    print(result)
+    return result
+concat_strings("Home","is","best")
+
+def concat(**kwargs): ## double asterisk: arbitrary keyword arguments
+    result = ""
+    for kwarg in kwargs.values():
+        result += " "+kwarg
+    return result
+
+## Lambda functions
