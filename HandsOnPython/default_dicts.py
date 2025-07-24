@@ -83,7 +83,7 @@ Arbitrary positional arguments *args: allows functions to accept any number of p
 Arbitrary keyword arguments **kwargs:  key = value
 """
 
-def concat_strings(*args): ## single asterisk: arbitrary positional arguments
+def concat_strings(*args): ## single asterisk: arbitrary positional arguments tuple
     result = ""
     for arg in args:
         result += " " + arg
@@ -91,7 +91,7 @@ def concat_strings(*args): ## single asterisk: arbitrary positional arguments
     return result
 concat_strings("Home","is","best")
 
-def concat(**kwargs): ## double asterisk: arbitrary keyword arguments
+def concat(**kwargs): ## double asterisk: arbitrary keyword arguments dictionary
     result = ""
     for kwarg in kwargs.values():
         result += " "+kwarg
@@ -241,3 +241,39 @@ def register_user(name, email, password):
         return {"name":name, "email": email, "password": password}
     except:
         return False
+    
+
+## Iterables, Iterators, List Comprehension, Generators
+"""
+Iterator: Iterating with a for and while loop on a sequences. Iterators work on iterable objects. 
+Iterator is an object that has next() method which produces consecutive values.
+
+Iterable: Is an object with a iter() method or __iter__(). These are such as lists, strings, dictionaries,
+file connections.
+
+Iterable is an object that can return an iterator, while an iterator is an object that keeps state 
+and produces the next value when you call next() on it. 
+ 
+List object is not an iterator. To make it an iterator, we apply the iter method. 
+In this regard, the list
+object is an iterable, because the iter() methid can be applied to it to return an iterator.
+"""
+
+
+flash = ['jay garrick', 'barry allen', 'wally west', 'bart allen'] ## an iterable object
+for f in flash: print(f)
+
+flashes = iter(flash) ## converted to an iterator
+
+print(next(flashes)) ## now we can use the next() method on it to get the next item in the sequence
+print(next(flashes))
+print(next(flashes))
+
+
+## Enumerate and zip functions
+## Enumerate keeps the counter index within an iterator
+for idx, value in enumerate(flash, start = 1): ## we can also pass a start argument here
+    print(idx, value)
+
+
+## zip accepts an arbitrary number of iterable object(s) and returns an iterator of tuples
