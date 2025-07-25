@@ -277,3 +277,4 @@ for idx, value in enumerate(flash, start = 1): ## we can also pass a start argum
 
 
 ## zip accepts an arbitrary number of iterable object(s) and returns an iterator of tuples
+zip(flash)
