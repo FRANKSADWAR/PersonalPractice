@@ -1,6 +1,7 @@
 from collections import defaultdict
 import string
 from datetime import datetime
+import pandas as pd
 
 ### DEFAULTDICT
 """
@@ -278,3 +279,56 @@ for idx, value in enumerate(flash, start = 1): ## we can also pass a start argum
 
 ## zip accepts an arbitrary number of iterable object(s) and returns an iterator of tuples
 zip(flash)
+
+
+#### unzip the contents of a zip using * 
+# Create a zip object from mutants and powers: z1
+mutants = ['a','b','c']
+powers = [10,11,12]
+
+z1 = zip(mutants,powers)
+
+# Print the tuples in z1 by unpacking with *
+print(*z1)
+
+# Re-create a zip object from mutants and powers: z1
+z1 = zip(mutants, powers)
+
+# 'Unzip' the tuples in z1 by unpacking with * and zip(): result1, result2
+result1, result2 = zip(*z1)
+
+# Check if unpacked tuples are equivalent to original tuples
+print(result1 == mutants)
+print(result2 == powers)
+
+
+### we can now use the 
+def count_entries(csv_file,c_size,colname):
+    """Return a dictionary with counts of
+    occurrences as value for each key."""
+    # Initialize an empty dictionary: counts_dict
+    counts_dict = {}
+
+    # Iterate over the file chunk by chunk
+    for chunk in pd.read_csv(csv_file, chunksize = c_size):
+        # Iterate over the column in DataFrame
+        for entry in chunk[colname]:
+            if entry in counts_dict.keys():
+                counts_dict[entry] += 1
+            else:
+                counts_dict[entry] = 1
+    # Return counts_dict
+    return counts_dict
+
+# Call count_entries(): result_counts
+result_counts = count_entries('tweets.csv',10,'lang')
+
+# Print result_counts
+print(result_counts)
+
+
+
+"""
+LIST COMPREHENSIONS
+"""
+
