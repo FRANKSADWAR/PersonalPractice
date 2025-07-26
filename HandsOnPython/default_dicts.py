@@ -340,9 +340,15 @@ y = [x+ 19 for x in list1]
 ## use with conditional stament
 [x for x in range(5) if x % 2 ==0 ]
 
+## when we want a result for the false condition as well, we start with the conditions first
+[num**2 if num % 2 ==0 else 0 for num in range(10)]
 
 ## use nested for loops in a list comprehension
 pairs = [(num1, num2) for num1 in range(0,2) for num2 in range(10,12)]
 print(pairs)
 
 list(map((lambda x: x + 2),list1))
+
+"""
+DICTIONARY COMPREHENSIONS
+"""
