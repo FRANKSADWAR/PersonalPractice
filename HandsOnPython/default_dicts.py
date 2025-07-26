@@ -331,4 +331,18 @@ print(result_counts)
 """
 LIST COMPREHENSIONS
 """
+list1 = [90,89,67]
+list2 = [12,34,56]
 
+# list comprehension
+y = [x+ 19 for x in list1]
+
+## use with conditional stament
+[x for x in range(5) if x % 2 ==0 ]
+
+
+## use nested for loops in a list comprehension
+pairs = [(num1, num2) for num1 in range(0,2) for num2 in range(10,12)]
+print(pairs)
+
+list(map((lambda x: x + 2),list1))
