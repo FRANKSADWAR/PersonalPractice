@@ -359,3 +359,20 @@ d = dict(zip(list1,list2))
 d2 = {k:v for (k,v) in zip(list1,list2)}
 
 {c.upper():c for c in ['Homer','Lab']}
+
+"""
+GENERATORS
+
+Generators support what is called lazy evaluation or loading.
+
+Generator functions:  are coded using the similar construct as the def function but uses yield keyword to return results
+Generator expressions: are similar to list comprehensions but results are wrappedin a parentheses ()
+The advantage of generators is that results do not have to be loaded into memory.
+This can save memory when a function's results are large or require a lot of computation to produce each value
+"""
+
+def buildsquares(n):
+    res = []
+    for i in range(n):
+        res.append(i**2)
+    yield res   ## use yield instead of return, which will produce results using the .next method
