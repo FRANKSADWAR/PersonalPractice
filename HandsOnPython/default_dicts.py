@@ -351,4 +351,11 @@ list(map((lambda x: x + 2),list1))
 
 """
 DICTIONARY COMPREHENSIONS
+
+Dictionaries can also be created using dictionaty comprehensions
 """
+
+d = dict(zip(list1,list2))
+d2 = {k:v for (k,v) in zip(list1,list2)}
+
+{c.upper():c for c in ['Homer','Lab']}
